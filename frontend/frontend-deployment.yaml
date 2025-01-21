@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workout-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workout-frontend
+  template:
+    metadata:
+      labels:
+        app: workout-frontend
+    spec:
+      containers:
+        - name: workout-frontend
+          image: jamalnafea/workout-app-frontend:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_BACKEND_URL
+              value: "http://backend-service:4000"

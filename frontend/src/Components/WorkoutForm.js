@@ -1,47 +1,44 @@
-import { useState } from 'react'
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
+import { useState } from 'react';
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const WorkoutForm = () => {
-    // this to update state automatic after add new workout
-    const { dispatch } = useWorkoutsContext()
+    const { dispatch } = useWorkoutsContext();
 
-    const [title, setTitle] = useState('')
-    const [load, setLoad] = useState('')
-    const [reps, setReps] = useState('')
-    const [error, setError] = useState(null)
-    const [emptyFields, setEmptyFields] = useState([])
+    const [title, setTitle] = useState('');
+    const [load, setLoad] = useState('');
+    const [reps, setReps] = useState('');
+    const [error, setError] = useState(null);
+    const [emptyFields, setEmptyFields] = useState([]);
 
     const handleSubmit = async (e) => {
-        {/* This Prevent submit from refresh the Page */ }
-        e.preventDefault()
-        const workout = { title, load, reps }
-        const response = await fetch('/api/workouts', {
-            // we can't send workout as object so we transfer it into json
+        e.preventDefault();
+        const workout = { title, load, reps };
+
+        const response = await fetch(`${apiUrl}/api/workouts`, {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        // this store our submit value on json variable
-        const json = await response.json()
+                'Content-Type': 'application/json',
+            },
+        });
+
+        const json = await response.json();
 
         if (!response.ok) {
-            setError(json.error)
-            setEmptyFields(json.emptyFields)
+            setError(json.error);
+            setEmptyFields(json.emptyFields);
         }
         if (response.ok) {
-            setEmptyFields([])
-            setError(null)
-            {/*I will set form value to empty to can add anther workout */ }
-            setTitle('')
-            setLoad('')
-            setReps('')
-            // To Show changes after updated the state(workout)
-            dispatch({ type: 'CREATE_WORKOUT', payload: json })
+            setEmptyFields([]);
+            setError(null);
+            setTitle('');
+            setLoad('');
+            setReps('');
+            dispatch({ type: 'CREATE_WORKOUT', payload: json });
         }
-
-    }
+    };
 
     return (
         <form className="create" onSubmit={handleSubmit}>
@@ -74,7 +71,7 @@ const WorkoutForm = () => {
             <button>Add Workout</button>
             {error && <div className="error">{error}</div>}
         </form>
-    )
-}
+    );
+};
 
-export default WorkoutForm
+export default WorkoutForm;
