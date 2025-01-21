@@ -1,4 +1,4 @@
-# Use the official Node.js Alpine image from the Docker Hub as the base image
+# Use the official Node.js Alpine image from the Docker Hub
 FROM node:alpine
 
 # Set the working directory inside the container
@@ -9,9 +9,6 @@ COPY package*.json ./
 
 # Install the dependencies
 RUN npm install
-
-# copy environment variables 
-# COPY .env ./
 
 # Copy the application code to the container
 COPY . .
