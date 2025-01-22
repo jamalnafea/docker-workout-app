@@ -20,4 +20,4 @@ spec:
             - containerPort: 80
           env:
             - name: REACT_APP_API_URL
-              value: "http://backend:4000"
+              value: "http://localhost:4000"
