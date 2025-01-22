@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workout-backend
+  name: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: workout-backend
+      app: backend
   template:
     metadata:
       labels:
-        app: workout-backend
+        app: backend
     spec:
       containers:
-        - name: workout-backend
+        - name: backend
           image: jamalnafea/workout-app-backend:latest
           ports:
             - containerPort: 4000

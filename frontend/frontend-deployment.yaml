@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workout-frontend
+  name: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: workout-frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: workout-frontend
+        app: frontend
     spec:
       containers:
-        - name: workout-frontend
+        - name: frontend
           image: jamalnafea/workout-app-frontend:latest
+          imagePullPolicy: Never # this means not pull it from dockerHub its avilable locally
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           env:
             - name: REACT_APP_BACKEND_URL
-              value: "http://backend-service:4000"
+              value: "http://backend:4000"
