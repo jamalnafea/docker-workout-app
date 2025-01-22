@@ -14,7 +14,10 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: jamalnafea/workout-app-frontend:latest
+          image: jamalnafea/workout-app-frontend:dev
           imagePullPolicy: Never # this means not pull it from dockerHub its avilable locally
           ports:
             - containerPort: 80
+          env:
+            - name: REACT_APP_API_URL
+              value: "http://backend:4000"
