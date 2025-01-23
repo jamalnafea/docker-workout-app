@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: jamalnafea/workout-app-frontend:dev
+          image: jamalnafea/workout-app-frontend:latest
           imagePullPolicy: Never # this means not pull it from dockerHub its avilable locally
           ports:
             - containerPort: 80
