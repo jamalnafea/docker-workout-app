@@ -4,3 +4,6 @@ node_modules
 *.log
 # Exclude any test files
 test/*
+# ignore kubernetes yaml files
+backend-deployment.yaml
+backend-service.yaml
