@@ -5,8 +5,6 @@ import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 import WorkoutDetails from '../Components/WorkoutDetails'
 import WorkoutForm from '../Components/WorkoutForm'
 
-const apiUrl = process.env.REACT_APP_API_URL; // Use the backend URL
-
 const Home = () => {
     // we now use global context instead of local state
     const { workouts, dispatch } = useWorkoutsContext()
@@ -14,7 +12,7 @@ const Home = () => {
         const fetchWorkouts = async () => {
             try {
                 // this res variable fetch data from backend server
-                const response = await fetch(`${apiUrl}/api/workouts/`)
+                const response = await fetch('/api/workouts/')
                 const json = await response.json()
 
                 if (response.ok) {
