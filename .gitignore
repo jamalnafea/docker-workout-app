@@ -1,2 +1,4 @@
 /Notes
-docker-compose.yml
+*.yaml
+/frontend/*.yaml
+/backend/*.yaml
