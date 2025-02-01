@@ -6,3 +6,4 @@ node_modules
 test/*
 # ignore kubernetes yaml files
 *.yaml
+.env

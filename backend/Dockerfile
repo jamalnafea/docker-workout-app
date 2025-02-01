@@ -10,8 +10,8 @@ COPY package*.json ./
 # Install the dependencies
 RUN npm install
 
-# copy environment variables 
-COPY .env ./
+# copy environment variables (adding secret instead)
+# COPY .env ./
 
 # Copy the application code to the container
 COPY . .
