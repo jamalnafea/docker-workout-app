@@ -2,6 +2,6 @@
 
 # this app containerized by docker
 
-# app docker image for frontend >> DockerHub >> jamalnafea/workout-app-frontend
+# app docker image for frontend >> DockerHub >> jamalnafea/workout-frontend:1.0.0
 
-# app docker image for backend >> DockerHub >> jamalnafea/workout-app-backend
+# app docker image for backend >> DockerHub >> jamalnafea/workout-backend:1.0.0

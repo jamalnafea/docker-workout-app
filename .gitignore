@@ -2,3 +2,4 @@
 *.yaml
 /frontend/*.yaml
 /backend/*.yaml
+.env
